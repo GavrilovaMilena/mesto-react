@@ -1,7 +1,7 @@
-function Header() {
+function Header(props) {
     return (
-    <header class="header">
-        <div class="header__logo"></div>
+    <header className="header">
+        <div className="header__logo" src={props.src} alt="Логотип Mesto Russia"></div>
     </header>
     );
 }
