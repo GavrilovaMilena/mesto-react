@@ -47,11 +47,11 @@ function App() {
                 type="text" 
                 className="popup__input" 
                 placeholder="Имя" 
-                maxlength="40" 
-                minlength="2"
+                maxLength="40" 
+                minLength="2"
                 required  
                 id="name" 
-                autocomplete="off"/>
+                autoComplete="off"/>
 
                 <span id="name-error" className="error"></span>
 
@@ -60,11 +60,11 @@ function App() {
                 type="text" 
                 className="popup__input" 
                 placeholder="О себе" 
-                maxlength="200"
-                minlength="2" 
+                maxLength="200"
+                minLength="2" 
                 required 
                 id="about" 
-                autocomplete="off"/>
+                autoComplete="off"/>
 
                 <span id="about-error" className="error"></span>
             </form>       
@@ -76,11 +76,11 @@ function App() {
                 type="text" 
                 className="popup__input popup__input_card" 
                 placeholder="Название"
-                maxlength="30" 
-                minlength="2" 
+                maxLength="30" 
+                minLength="2" 
                 required 
                 id="text" 
-                autocomplete="off"/>
+                autoComplete="off"/>
 
                 <span id="text-error" className="error"></span>
 
@@ -91,7 +91,7 @@ function App() {
                 placeholder="Ссылка на картинку" 
                 required 
                 id="url-card" 
-                autocomplete="off"/>
+                autoComplete="off"/>
 
                 <span id="url-card-error" className="error"></span>
             </form>
@@ -105,7 +105,7 @@ function App() {
                 placeholder="Ссылка на картинку"
                 required
                 id="url-avatar"
-                autocomplete="off"/>
+                autoComplete="off"/>
         
                 <span id="url-avatar-error" className="error"></span>
             </form>

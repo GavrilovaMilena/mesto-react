@@ -1,5 +1,6 @@
 import React from 'react'
-import { api } from '../utils/api.js'
+import api from '../utils/api.js'
+import Card from './Card.js';
 
 function Main(props) {
     const [userName, setUserName] = React.useState('');
@@ -15,17 +16,17 @@ function Main(props) {
                 setAvatar(data.avatar);
             })
             .catch((err) => {
-                console.log('error', err)
+                console.log(err);
             })
     }, [])
 
     React.useEffect(() => {
         api.getInitialCards()
             .then((data) => {
-                setCards(data)
+                setCards(data);
             })
             .catch((err) => {
-                console.log('error', err)
+                console.log(err);
             })
     }, [])
 
@@ -33,7 +34,7 @@ function Main(props) {
         <main className="content">
             <section className="profile">
                 <div className="profile__avatar-container">
-                    <img className="profile__avatar" style={{ backgroundImage: `url-(${userAvatar})` }} alt="Фото профиля" />
+                    <img className="profile__avatar" src={userAvatar} alt="Фото профиля" />
                     <button className="profile__avatar-button" onClick={props.onEditAvatar}></button>
                 </div>
                 <div className="info">
@@ -44,18 +45,8 @@ function Main(props) {
                 <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
             </section>
             <section className="cards">
-                {cards.map(() => (
-                    <div className="card">
-                        <img className="card__image" style={{ backgroundImage: `url-(${cards})` }} alt={props.name} />
-                        <button className="card__delete" type="button"></button>
-                        <div className="card__group">
-                            <h3 className="card__text">{props.name}</h3>
-                            <div className="card__like-container">
-                                <button className="card__like" type="button"></button>
-                                <span className="card__like-counter"></span>
-                            </div>
-                        </div>
-                    </div>
+                {cards.map((card) => (
+                        <Card card={card} key={card._id} onCardClick={props.onCardClick}/>
                 ))
                 }
             </section>
