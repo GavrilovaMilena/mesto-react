@@ -1,3 +1,5 @@
+import React from 'react'
+
 function ImagePopup(props) {
     return (
         <div className={`popup popup_full ${props.card ? 'popup_visible' : ''}`}>
