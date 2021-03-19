@@ -118,6 +118,29 @@ class Api {
             })
     }
 
+    changeLikeCardStatus(cardId, isLiked) {
+        if (isLiked) {
+            return fetch(`${this._url}/cards/likes/${cardId}`, {
+                method: "PUT",
+                headers: this._headers,
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+        } else {
+            return fetch(`${this._url}/cards/likes/${cardId}`, {
+                method: "DELETE",
+                headers: this._headers,
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+        }
+    }
 }
 
 const api = new Api({
