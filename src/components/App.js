@@ -7,6 +7,7 @@ import PopupWithForm from './PopupWithForm.js'
 import ImagePopup from './ImagePopup.js'
 import { CurrentUserContext } from '../../src/contexts/CurrentUserContext.js'
 import EditProfilePopup from './EditProfilePopup.js'
+import EditAvatarPopup from "./EditAvatarPopup.js";
 
 import api from '../utils/api.js'
 import '../index.css'
@@ -95,20 +96,7 @@ function App() {
                         <span id="url-card-error" className="error"></span>
                     </form>
                 </PopupWithForm>
-                <PopupWithForm name="avatarEdit" title="Обновить аватар" buttonName="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-                    <form name="avatarForm" className="popup__form popup__form_avatar">
-                        <input
-                            name="avatar"
-                            type="url"
-                            className="popup__input popup__input_avatar"
-                            placeholder="Ссылка на картинку"
-                            required
-                            id="url-avatar"
-                            autoComplete="off" />
-
-                        <span id="url-avatar-error" className="error"></span>
-                    </form>
-                </PopupWithForm>
+                <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
                 <PopupWithForm name="cardDelete" title="Вы уверены?" buttonName="Да" />
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
             </div>
