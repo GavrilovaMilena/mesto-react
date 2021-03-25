@@ -76,6 +76,7 @@ class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
     }
+    
     updateAvatarImage(imageUrl) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',

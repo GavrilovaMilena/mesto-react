@@ -9,7 +9,6 @@
     border: 0;
     outline: none;
     background-image: url("../../../images/Group.svg");
-    visibility: hidden;
 }
 
 .card__delete:hover {
