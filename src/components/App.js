@@ -52,6 +52,13 @@ function App() {
         setSelectedCard(false);
     }
 
+    function handleUpdateUser({ name, about }) {
+        api.setUserInfo({ name, about }).then((data) => {
+          setCurrentUser({ name: data.name, about: about, avatar: data.avatar });
+          closeAllPopups();
+        });
+      }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="body">
@@ -60,7 +67,7 @@ function App() {
                     <Main onCardClick={handleCardClick} onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick} onAddPlace={handleAddPlaceClick} />
                     <Footer />
                 </div>
-                <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/>
+                <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
                 <PopupWithForm name="cardEdit" title="Новое место" buttonName="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
                     <form name="cardForm" className="popup__form popup__form_card">
                         <input

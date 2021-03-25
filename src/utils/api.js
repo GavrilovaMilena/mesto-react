@@ -28,22 +28,22 @@ class Api {
             })
     }
 
-    setUserInfo(newName, newAbout) {
+    setUserInfo({ name, about, avatar }) {
         return fetch(`${this._url}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                name: newName,
-                about: newAbout
-            })
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify({
+            name: `${name}`,
+            about: `${about}`,
+            avatar: `${avatar}`,
+          }),
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-    }
+      }
 
     addCard(name, image) {
         return fetch(`${this._url}/cards`, {
