@@ -55,7 +55,18 @@ function App() {
 
     function handleUpdateUser({ name, about }) {
         api.setUserInfo({ name, about }).then((data) => {
-          setCurrentUser({ name: data.name, about: about, avatar: data.avatar });
+          setCurrentUser({ name: data.name, about: data.about, avatar: data.avatar });
+          closeAllPopups();
+        });
+      }
+
+      function handleUpdateAvatar({ avatar }) {
+        api.updateAvatarImage({ avatar }).then((data) => {
+          setCurrentUser({
+            name: data.name,
+            about: data.about,
+            avatar: data.avatar,
+          });
           closeAllPopups();
         });
       }
@@ -96,7 +107,7 @@ function App() {
                         <span id="url-card-error" className="error"></span>
                     </form>
                 </PopupWithForm>
-                <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+                <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
                 <PopupWithForm name="cardDelete" title="Вы уверены?" buttonName="Да" />
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
             </div>
