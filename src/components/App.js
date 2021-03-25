@@ -17,7 +17,12 @@ function App() {
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState(false);
-    const [currentUser, setCurrentUser] = React.useState('');
+    
+    const [currentUser, setCurrentUser] = React.useState({
+        name: "",
+        about: "",
+        avatar: "",
+      });
 
     React.useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()]).then(([currentUser]) => {
