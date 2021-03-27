@@ -50,11 +50,12 @@ function App() {
     }, [])
 
     function handleCardLike(card) {
-        debugger;
         const isLiked = card.likes.some(i => i._id === currentUser._id);
 
         api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        }).catch((err) => {
+            console.log(err);
         });
     }
 
@@ -62,7 +63,9 @@ function App() {
         api.deleteCard(card._id).then(() => {
             const newCards = cards.filter(c => c._id !== card._id);
             setCards(newCards);
-        })
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     function handleCardClick(card) {
@@ -94,6 +97,8 @@ function App() {
                 _id: data._id
             });
             closeAllPopups();
+        }).catch((err) => {
+            console.log(err);
         });
     }
 
@@ -106,6 +111,8 @@ function App() {
                 _id: data._id
             });
             closeAllPopups();
+        }).catch((err) => {
+            console.log(err);
         });
     }
 
@@ -113,6 +120,8 @@ function App() {
         api.addCard(name, link).then((newCard) => {
             setCards([newCard, ...cards]);
             closeAllPopups();
+        }).catch((err) => {
+            console.log(err);
         });
     }
 
